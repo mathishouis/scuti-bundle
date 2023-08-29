@@ -1,3 +1,49 @@
-export class Bundle {
+import { BufferWS } from "buffer.ws";
 
+export class Bundle {
+    private readonly files: Map<string, Buffer>;
+
+    constructor(buffer?: Buffer) {
+        this.files = new Map<string, Buffer>();
+        if (buffer) this._parse(buffer);
+    }
+
+    private _parse(buffer: Buffer): void {
+        const parsedBuffer: BufferWS = new BufferWS(buffer);
+        const fileCount: number = parsedBuffer.readShort();
+
+        for (let i: number = 0; i < fileCount; i++) {
+            const fileName: string = parsedBuffer.readString();
+            const fileBuffer: Buffer = Buffer.from(parsedBuffer.readString(), 'utf-8');
+
+            this.add(fileName, fileBuffer);
+        }
+    }
+
+    public add(name: string, data: Buffer): void {
+        this.files.set(name, data);
+    }
+
+    public get(name: string): Buffer {
+        return this.files.get(name);
+    }
+
+    public get buffer(): Buffer {
+        const buffer: BufferWS = new BufferWS();
+
+        buffer.writeShort(this.files.size);
+
+        for(const file of this.files.entries())
+        {
+            const fileName: string = file[0];
+            const fileBuffer: Buffer = file[1];
+
+            buffer.writeString(fileName);
+            buffer.writeString(fileBuffer.toString());
+        }
+
+        buffer.flip();
+
+        return buffer.getBuffer();
+    }
 }

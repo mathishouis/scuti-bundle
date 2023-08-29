@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "app": "Scuti Extractor",
+    "format": "RGBA8888",
+    "image": "walls.png",
+    "scale": "1.0",
+    "size": {
+      "w": 32,
+      "h": 1339
+    },
+    "version": "1.0"
+  },
+  "frames": {
+    "lively": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 8
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": false
+    }
+  },
+  "materials": [
+    {
+      "id": 101,
+      "color": 16763904,
+      "texture": "lively"
+    }
+  ]
+}

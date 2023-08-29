@@ -40,6 +40,6 @@
     "/dist"
   ],
   "dependencies": {
-    "buffer": "^6.0.3"
+    "buffer.ws": "^1.0.14"
   }
 }
