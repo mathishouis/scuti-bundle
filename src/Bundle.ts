@@ -1,7 +1,8 @@
-import { BufferWS } from "buffer.ws";
+import { BufferWS } from 'buffer.ws';
+import { deflate, inflate } from 'pako';
 
 export class Bundle {
-    private readonly files: Map<string, Buffer>;
+    public readonly files: Map<string, Buffer>;
 
     constructor(buffer?: Buffer) {
         this.files = new Map<string, Buffer>();
@@ -9,7 +10,7 @@ export class Bundle {
     }
 
     private _parse(buffer: Buffer): void {
-        const parsedBuffer: BufferWS = new BufferWS(buffer);
+        const parsedBuffer: BufferWS = new BufferWS(inflate(buffer));
         const fileCount: number = parsedBuffer.readShort();
 
         for (let i: number = 0; i < fileCount; i++) {
@@ -44,6 +45,6 @@ export class Bundle {
 
         buffer.flip();
 
-        return buffer.getBuffer();
+        return deflate(buffer.getBuffer());
     }
 }
