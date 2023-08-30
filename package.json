@@ -1,6 +1,6 @@
 {
   "name": "scuti-bundle",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "The bundle manager package for scuti",
   "main": "dist/Bundle.js",
   "types": "dist/Bundle.d.ts",
@@ -40,8 +40,8 @@
     "/dist"
   ],
   "dependencies": {
-    "buffer.ws": "^1.0.14",
-    "pako": "^2.1.0",
-    "buffer": "^6.0.3"
+    "buffer": "^6.0.3",
+    "buffer.ws": "^1.0.15",
+    "pako": "^2.1.0"
   }
 }

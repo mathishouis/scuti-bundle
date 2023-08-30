@@ -16,7 +16,8 @@ export class Bundle {
 
         for (let i: number = 0; i < fileCount; i++) {
             const fileName: string = parsedBuffer.readString();
-            const fileBuffer: Buffer = Buffer.from(parsedBuffer.readString(), 'utf-8');
+            const fileLength: number = parsedBuffer.readShort();
+            const fileBuffer: Buffer = parsedBuffer.readBytes(fileLength).buffer;
 
             this.add(fileName, fileBuffer);
         }
@@ -26,8 +27,8 @@ export class Bundle {
         this.files.set(name, data);
     }
 
-    public get(name: string): string {
-        return this.files.get(name).toString('utf-8');
+    public get(name: string): Buffer {
+        return this.files.get(name);
     }
 
     public get buffer(): Buffer {
@@ -41,11 +42,12 @@ export class Bundle {
             const fileBuffer: Buffer = file[1];
 
             buffer.writeString(fileName);
-            buffer.writeString(fileBuffer.toString());
+            buffer.writeShort(fileBuffer.length)
+            buffer.writeBytes(fileBuffer);
         }
 
         buffer.flip();
 
-        return deflate(buffer.getBuffer());
+        return deflate(buffer.buffer);
     }
 }

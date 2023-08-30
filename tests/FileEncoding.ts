@@ -6,14 +6,13 @@ describe('file encoding & decoding test', () => {
         const json = fs.readFileSync(__dirname + '/files/walls.json', { flag: 'r' });
         const image = fs.readFileSync(__dirname + '/files/walls.png', { flag: 'r' });
         let bundle = new Bundle();
-        bundle.add('spritesheet', json);
-        bundle.add('image', image);
+        bundle.add('walls.json', json);
+        bundle.add('walls.png', image);
         fs.writeFileSync(__dirname + '/results/walls.bundle', bundle.buffer);
     });
     it('file should be decoded', function () {
         const walls = fs.readFileSync(__dirname + '/results/walls.bundle', { flag: 'r' });
         let bundle = new Bundle(walls);
-        bundle.get('spritesheet');
-        bundle.get('image');
+        bundle.get('walls.json');
     });
 });
