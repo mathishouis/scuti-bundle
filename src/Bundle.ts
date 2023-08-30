@@ -26,8 +26,8 @@ export class Bundle {
         this.files.set(name, data);
     }
 
-    public get(name: string): Buffer {
-        return this.files.get(name);
+    public get(name: string): string {
+        return this.files.get(name).toString('utf-8');
     }
 
     public get buffer(): Buffer {
