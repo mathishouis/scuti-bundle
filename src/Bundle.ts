@@ -1,5 +1,6 @@
 import { BufferWS } from 'buffer.ws';
 import { deflate, inflate } from 'pako';
+import { Buffer } from 'buffer';
 
 export class Bundle {
     public readonly files: Map<string, Buffer>;
