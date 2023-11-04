@@ -1,0 +1,59 @@
+{
+    "name": "default",
+    "background": "default.png",
+    "offsets": {
+        "x": 1788,
+        "y": 685
+    },
+    "assets": [
+        {
+            "id": 0,
+            "asset": 0,
+            "position": {
+                "x": 796,
+                "y": 1818
+            }
+        },
+        {
+            "id": 1,
+            "asset": 1,
+            "position": {
+                "x": 2872,
+                "y": 1065
+            }
+        },
+        {
+            "id": 2,
+            "asset": 2,
+            "position": {
+                "x": 3195,
+                "y": 1985
+            }
+        }
+    ],
+    "lands": [
+        {
+            "type": 0,
+            "position": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "type": 0,
+            "position": {
+                "x": 0,
+                "y": 1
+            }
+        }
+    ],
+    "expansions": [
+        {
+            "id": 0,
+            "position": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    ]
+}

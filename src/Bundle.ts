@@ -16,7 +16,7 @@ export class Bundle {
 
         for (let i: number = 0; i < fileCount; i++) {
             const fileName: string = parsedBuffer.readString();
-            const fileLength: number = parsedBuffer.readShort();
+            const fileLength: number = parsedBuffer.readInt();
             const fileBuffer: Buffer = parsedBuffer.readBytes(fileLength).buffer;
 
             this.add(fileName, fileBuffer);
@@ -42,7 +42,7 @@ export class Bundle {
             const fileBuffer: Buffer = file[1];
 
             buffer.writeString(fileName);
-            buffer.writeShort(fileBuffer.length)
+            buffer.writeInt(fileBuffer.length);
             buffer.writeBytes(fileBuffer);
         }
 
